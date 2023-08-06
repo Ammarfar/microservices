@@ -1,0 +1,37 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+  - name: user_service
+    host: user
+    port: 3000
+    protocol: http
+    routes:
+      - name: user_route
+        paths:
+          - /user
+        strip_path: true
+  - name: product_service
+    host: product
+    port: 3001
+    protocol: http
+    routes:
+      - name: product_route
+        paths:
+          - /product
+        strip_path: true
+  - name: trx_service
+    host: trx
+    port: 3002
+    protocol: http
+    routes:
+      - name: trx_route
+        paths:
+          - /trx
+        strip_path: true
+plugins:
+  - name: rate-limiting
+    config:
+      second: 5
+      hour: 10000
+      policy: local
