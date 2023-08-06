@@ -1,0 +1,5 @@
+CREATE DATABASE IF NOT EXISTS mcs_user_service;
+
+CREATE DATABASE IF NOT EXISTS mcs_product_service;
+
+CREATE DATABASE IF NOT EXISTS mcs_trx_service;

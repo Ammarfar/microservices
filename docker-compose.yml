@@ -1,0 +1,87 @@
+version: "3"
+services:
+  user:
+    build:
+      context: ./user
+      dockerfile: Dockerfile.dev
+    restart: on-failure
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./user/.env.docker
+    networks:
+      - backend
+    volumes:
+      - ./user:/app/user
+      - /app/user/node_modules
+    depends_on:
+      - mysql
+      - rabbitmq
+  product:
+    build:
+      context: ./product
+      dockerfile: Dockerfile.dev
+    restart: on-failure
+    ports:
+      - "3001:3001"
+    env_file:
+      - ./product/.env.docker
+    networks:
+      - backend
+    volumes:
+      - ./product:/app/product
+      - /app/product/node_modules
+    depends_on:
+      - mysql
+      - rabbitmq
+  trx:
+    build:
+      context: ./trx
+      dockerfile: Dockerfile.dev
+    restart: on-failure
+    ports:
+      - "3002:3002"
+    env_file:
+      - ./trx/.env.docker
+    networks:
+      - backend
+    volumes:
+      - ./trx:/app/trx
+      - /app/trx/node_modules
+    depends_on:
+      - mysql
+      - rabbitmq
+  mysql:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=admin
+      - MYSQL_ROOT_PASSWORD=admin
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init:/docker-entrypoint-initdb.d
+    networks:
+      - backend
+  rabbitmq:
+    image: rabbitmq:3.12-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=root
+      - RABBITMQ_DEFAULT_PASS=admin
+    volumes:
+      - rabbit_data:/var/lib/rabbitmq
+    networks:
+      - backend
+networks:
+  backend:
+    driver: bridge
+volumes:
+  mysql_data:
+    driver: local
+  rabbit_data:
+    driver: local
