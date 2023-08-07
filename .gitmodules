@@ -1,0 +1,9 @@
+[submodule "user"]
+	path = user
+	url = https://github.com/Ammarfar/user-service
+[submodule "product"]
+	path = product
+	url = https://github.com/Ammarfar/product-service
+[submodule "trx"]
+	path = trx
+	url = https://github.com/Ammarfar/trx-service
