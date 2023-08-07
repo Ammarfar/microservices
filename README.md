@@ -5,7 +5,7 @@ This boilerplate implementing:
 - Clean Architecture by Uncle Bob[(source)](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
 - Event Driven Architecture(Microservice).
 
-# Technology Used:
+# Technology Used
 
 - NestJS Framework
 - RabbitMQ Message Broker
@@ -16,7 +16,7 @@ This boilerplate implementing:
 - Caching in every HTTP GET Method (NestJS built in package)
 - Rate Limiting Security (NestJS built in package)
 
-# Quick Review:
+# Quick Review
 
 1. Clean architecture means that the business logic app needs to be separated with its delivery mechanism. To follow that rule in this case I made 3 main folder for each service(domain, use_case & infrastructure) where there are 3 service in this boilerplate(user, product & transaction) and I'll give a quick explain for each folder to the following:
 
