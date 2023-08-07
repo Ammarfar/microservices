@@ -6,28 +6,31 @@ services:
     host: user
     port: 3000
     protocol: http
+    path: "/v1/users"
     routes:
       - name: user_route
         paths:
-          - /user
+          - /users
         strip_path: true
   - name: product_service
     host: product
     port: 3001
     protocol: http
+    path: "/v1/products"
     routes:
       - name: product_route
         paths:
-          - /product
+          - /products
         strip_path: true
   - name: trx_service
     host: trx
     port: 3002
     protocol: http
+    path: "/v1/trxs"
     routes:
       - name: trx_route
         paths:
-          - /trx
+          - /trxs
         strip_path: true
 plugins:
   - name: rate-limiting

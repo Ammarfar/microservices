@@ -34,12 +34,11 @@ cd microservices
 docker-compose up -d
 ```
 
-open the browser and go to http://localhost:8000/{service}/v1/{services} (still on progress to fix this routing)
+open the browser and go to http://localhost:8000/{services}
 see the detail in postman collection https://documenter.getpostman.com/view/12263458/2s9XxySDhm
 
 # Pending Improvement
 
-- fix routing
 - implement unit testing
 - each service hasn't isolated yet, still can access it when hit its url
 - need to build custom event listener since each service only can consume to one queue in one transport method in NestJS
