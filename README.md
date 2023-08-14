@@ -39,7 +39,6 @@ see the detail in postman collection https://documenter.getpostman.com/view/1226
 
 # Pending Improvement
 
-- implement unit testing
 - each service hasn't isolated yet, still can access it when hit its url
 - need to build custom event listener since each service only can consume to one queue in one transport method in NestJS
 
